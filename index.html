@@ -194,18 +194,24 @@
           <span class="section-label">Gallery</span>
           <h2 class="section-title">Gallery</h2>
         </header>
-        <div class="gallery-grid reveal">
-          <div class="gallery-item">
-            <img src="images/shortcake.jpeg" alt="苺のショートケーキ" loading="lazy">
+        <div class="slideshow reveal">
+          <div class="slideshow-track">
+            <div class="slide">
+              <img src="images/878b699c-b6e8-4977-b6b2-09673e1dc22b.jpg" alt="サンドウィッチプレート" loading="lazy">
+            </div>
+            <div class="slide">
+              <img src="images/70129b11-3996-40a7-a153-3c48b3a2087f.jpg" alt="店内" loading="lazy">
+            </div>
+            <div class="slide">
+              <img src="images/toppuokasi.jpeg" alt="パリブレスト" loading="lazy">
+            </div>
           </div>
-          <div class="gallery-item">
-            <img src="images/eclair.jpeg" alt="エクレア" loading="lazy">
-          </div>
-          <div class="gallery-item">
-            <img src="images/sarada.jpeg" alt="サラダプレート" loading="lazy">
-          </div>
-          <div class="gallery-item">
-            <img src="images/naikan.jpeg" alt="店内" loading="lazy">
+          <button class="slide-prev" aria-label="前へ">&#8249;</button>
+          <button class="slide-next" aria-label="次へ">&#8250;</button>
+          <div class="slideshow-dots" aria-label="スライド選択">
+            <button class="dot active" aria-label="1枚目"></button>
+            <button class="dot" aria-label="2枚目"></button>
+            <button class="dot" aria-label="3枚目"></button>
           </div>
         </div>
         <div class="gallery-cta reveal">
@@ -353,6 +359,41 @@
           });
         });
       });
+
+      // Slideshow
+      (() => {
+        const track = document.querySelector('.slideshow-track');
+        if (!track) return;
+        const dots = document.querySelectorAll('.dot');
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
+        let startX = 0;
+        let autoTimer;
+
+        function goTo(index) {
+          current = ((index % slides.length) + slides.length) % slides.length;
+          track.style.transform = `translateX(-${current * 100}%)`;
+          dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+
+        function resetAuto() {
+          clearInterval(autoTimer);
+          autoTimer = setInterval(() => goTo(current + 1), 4500);
+        }
+
+        dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+        document.querySelector('.slide-prev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+        document.querySelector('.slide-next')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+        // Touch swipe
+        track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', e => {
+          const diff = startX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 44) { goTo(current + (diff > 0 ? 1 : -1)); resetAuto(); }
+        }, { passive: true });
+
+        resetAuto();
+      })();
 
       // Scroll reveal (IntersectionObserver)
       const observer = new IntersectionObserver((entries) => {
