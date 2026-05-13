@@ -790,14 +790,19 @@ ul, ol {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-105%);
-    transition: transform 0.45s var(--ease);
+    transform: translateY(calc(-100% - var(--header-h)));
+    visibility: hidden;
+    transition: transform 0.45s var(--ease),
+                visibility 0s 0.45s;
     pointer-events: none;
     border-top: 1px solid rgba(26, 48, 102, 0.07);
   }
 
   .nav.open {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.45s var(--ease),
+                visibility 0s 0s;
     pointer-events: auto;
   }
 
