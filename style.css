@@ -228,9 +228,8 @@ ul, ol {
 
 .hero-images {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   height: 100%;
-  gap: 2px;
 }
 
 .hero-col {
@@ -799,11 +798,6 @@ ul, ol {
   /* Hero */
   .hero { height: 100svh; }
 
-  .hero-images {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-  }
-
   .hero-title {
     font-size: clamp(28px, 10vw, 48px);
   }
@@ -850,10 +844,3 @@ ul, ol {
   }
 }
 
-@media (max-width: 400px) {
-  .hero-images {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-col:last-child { display: none; }
-}
