@@ -779,7 +779,7 @@ ul, ol {
 
   /* Header */
   .btn-reservation { display: none; }
-  .hamburger       { display: flex; }
+  .hamburger       { display: flex; margin-left: auto; }
 
   .nav {
     position: fixed;
