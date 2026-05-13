@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "madame-bonbonniere",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "const http=require('http'),PORT=process.env.PORT||3457,TARGET=4567;http.createServer((req,res)=>{const opt={hostname:'127.0.0.1',port:TARGET,path:req.url,method:req.method,headers:req.headers};const pr=http.request(opt,br=>{res.writeHead(br.statusCode,br.headers);br.pipe(res);});req.pipe(pr);pr.on('error',e=>{res.writeHead(502);res.end('proxy error: '+e.message);});}).listen(PORT,()=>console.log('proxy ready on '+PORT));"],
+      "port": 3457
+    }
+  ]
+}
