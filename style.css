@@ -109,15 +109,13 @@ ul, ol {
   z-index: 200;
   height: var(--header-h);
   background: rgba(26, 48, 102, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   transition: background 0.4s var(--ease),
               box-shadow 0.4s var(--ease);
 }
 
 #header.scrolled {
   background: rgba(26, 48, 102, 0.97);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .header-inner {
@@ -785,7 +783,7 @@ ul, ol {
   .nav {
     position: fixed;
     inset: var(--header-h) 0 0 0;
-    background: rgba(253, 251, 248, 0.98);
+    background: rgba(26, 48, 102, 0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex;
@@ -796,7 +794,7 @@ ul, ol {
     transition: transform 0.45s var(--ease),
                 visibility 0s 0.45s;
     pointer-events: none;
-    border-top: 1px solid rgba(26, 48, 102, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav.open {
@@ -816,6 +814,7 @@ ul, ol {
   .nav-link {
     font-size: 22px;
     letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   /* Hero */
