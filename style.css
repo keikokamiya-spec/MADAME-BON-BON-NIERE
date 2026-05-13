@@ -291,15 +291,17 @@ ul, ol {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 13px;
+  font-weight: 400;
   letter-spacing: 0.2em;
   margin-bottom: 22px;
   opacity: 0;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   animation: fadeUp 1s 0.4s var(--ease-out) forwards;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(38px, 6.5vw, 76px);
   letter-spacing: 0.2em;
   line-height: 1.18;
@@ -308,6 +310,7 @@ ul, ol {
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
 }
 
 .hero-title-line {
@@ -328,8 +331,9 @@ ul, ol {
 .hero-jp {
   font-family: var(--font-serif-jp);
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.35em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   margin-bottom: 44px;
   opacity: 0;
   animation: fadeUp 1s 1s var(--ease-out) forwards;
